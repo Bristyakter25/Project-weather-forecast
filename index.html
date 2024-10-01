@@ -9,14 +9,14 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="titillium-font">
+<body class="titillium-font overflow-hidden">
         <header class="header-section">
             <h3 class="title mb-4 text-white">Weather Forecast App</h3>
             <div class="search flex justify-center items-center my-5">
                 
-                <input type="text" placeholder="Enter City Name" class="form lg:w-[600px] lg:h-12 w-96 h-10 mr-5 p-5 rounded-full text-xl">
+                <input type="text" placeholder="Enter City Name" class="form lg:w-[600px] w-72 lg:h-12  h-10 lg:mr-5 ml-2 p-5 rounded-full text-xl">
                
-                <button class="btn ml-10 mt-4 bg-white rounded-full p-3 h-12 w-12 mb-4"><img class="search-img w-5 h-5 " src="images/search.png" alt=""> </button>
+                <button class="btn lg:ml-10 ml-4 mt-4 bg-white rounded-full p-3 h-12 w-12 mb-4"><img class="search-img w-5 h-5 " src="images/search.png" alt=""> </button>
             </div>
         </header>
         <main>
@@ -24,19 +24,19 @@
                 <img src="images/rain.png" class="weather-img w-72 mx-auto" alt="">
                 <h3 class="temp text-[45px] text-center text-white">22&deg;</h3>
                 <h2 class="city text-[50px] text-center text-white ">New York</h2>
-                <div class="details flex w-[750px] mx-auto mt-10 h-[200px]">
-                    <div class="col flex mr-80 ml-10">
+                <div class="details flex w-full lg:w-[750px] mx-auto mt-10 lg:h-[200px] h-[270px]">
+                    <div class="col flex lg:mr-80 mr-24 lg:ml-10 ml-5">
                         <img src="images/humidity.png" alt="" class="hum-img w-9 h-9 mr-3 mt-5 "> 
                         <div>
-                            <p class="humidity text-4xl text-white mb-2">50%</p>
-                            <p class="text-2xl text-white">Humidity</p>
+                            <p class="humidity lg:text-4xl text-[20px] text-white mb-2">50%</p>
+                            <p class="lg:text-2xl text-white text-[18px]">Humidity</p>
                         </div>
                     </div>
                     <div class="flex mb-10"></div>
                         <img src="images/wind.png" alt="" class="win-img w-9 h-9 mr-3 mt-5" >
                         <div >
-                            <p class="wind text-4xl text-white  mb-2">15 km/hr</p>
-                            <p class="text-2xl text-white ml-2">Wind Speed</p>
+                            <p class="wind lg:text-4xl text-[20px] text-white  mb-2">15 km/hr</p>
+                            <p class="lg:text-2xl text-[18px] text-white lg:mr-2 mr-3">Wind Speed</p>
                         </div>
                     </div>
                 </div>
