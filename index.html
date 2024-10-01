@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="styles/style.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="titillium-font">
+        <header class="header-section">
+            <h3 class="title mb-4 text-white">Weather Forecast App</h3>
+            <div class="search flex justify-center items-center my-5">
+                
+                <input type="text" placeholder="Enter City Name" class="form lg:w-[600px] lg:h-12 w-96 h-10 mr-5 p-5 rounded-full text-xl">
+               
+                <button class="btn ml-10 mt-4 bg-white rounded-full p-3 h-12 w-12 mb-4"><img class="search-img w-5 h-5 " src="images/search.png" alt=""> </button>
+            </div>
+        </header>
+        <main>
+            <div class="weather mb-10">
+                <img src="images/rain.png" class="weather-img w-72 mx-auto" alt="">
+                <h3 class="temp text-[45px] text-center text-white">22&deg;</h3>
+                <h2 class="city text-[50px] text-center text-white ">New York</h2>
+                <div class="details flex w-[750px] mx-auto mt-10 h-[200px]">
+                    <div class="col flex mr-80 ml-10">
+                        <img src="images/humidity.png" alt="" class="hum-img w-9 h-9 mr-3 mt-5 "> 
+                        <div>
+                            <p class="humidity text-4xl text-white mb-2">50%</p>
+                            <p class="text-2xl text-white">Humidity</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-10"></div>
+                        <img src="images/wind.png" alt="" class="win-img w-9 h-9 mr-3 mt-5" >
+                        <div >
+                            <p class="wind text-4xl text-white  mb-2">15 km/hr</p>
+                            <p class="text-2xl text-white ml-2">Wind Speed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </main>
+       
+        
+    <script>
+        const apiKey = "41b4eebf0cbbf522f140d3cc474e289f";
+        const apiUrl =  "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+        const searchBox = document.querySelector('.form')
+        const searchBtn = document.querySelector('.btn')
+        const weatherImage = document.querySelector('.weather-img')
+
+        async function checkWeather(city) {
+            const response = await fetch(apiUrl + city +  `&appid=${apiKey}`);
+            var data = await response.json();
+            
+            document.querySelector(".city").innerHTML = data.name;
+            document.querySelector(".temp").innerHTML = Math.round(data.main.temp)  + "&deg;";
+            document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+            document.querySelector(".wind").innerHTML = data.wind.speed + " km/hr";
+
+            if (data.weather[0].main == "Clouds"){
+                weatherImage.src = 'images/clouds.png'
+            }
+            else if(data.weather[0].main == "Clear"){
+                weatherImage.src = 'images/clear.png'
+            }
+            else if(data.weather[0].main == "Drizzle"){
+                weatherImage.src = 'images/drizzle.png'
+            }
+            else if(data.weather[0].main == "Rain"){
+                weatherImage.src = 'images/rain.png'
+            }
+            else if(data.weather[0].main == "Clear"){
+                weatherImage.src = 'images/clear.png'
+            }
+            else if(data.weather[0].main == "Mist"){
+                weatherImage.src = 'images/mist.png'
+            }
+            document.querySelector(".weather").style.display = 'block';
+        }
+
+        searchBtn.addEventListener("click", ()=>{
+            checkWeather(searchBox.value);
+        })
+       
+    </script>
+</body>
+</html>
